@@ -28,8 +28,11 @@ public class Base extends Application {
 
         box.getTransforms().add(translate);
 
+        // Creating a roof for the house using Roof class
+        Roof roof = new Roof();
+
         //Creating a Group object
-        Group root = new Group(box);
+        Group root = new Group(box, roof.getRoof());
 
         //Creating a scene object
         Scene scene = new Scene(new Group(root), 800, 600);
@@ -45,7 +48,7 @@ public class Base extends Application {
         stage.show();
 
         // Create rotation control
-        Rotation.Rotation.setupRotation(box,root, scene);
+        Rotation.Rotation.setupRotation(box, root, scene);
 
     }
 

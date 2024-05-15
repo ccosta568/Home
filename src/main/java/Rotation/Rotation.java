@@ -1,5 +1,6 @@
 package Rotation;
 
+import House.Roof;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Slider;
@@ -45,8 +46,8 @@ public class Rotation {
                 double deltaX = event.getSceneX() - mousePosX.get();
                 double deltaY = event.getSceneY() - mousePosY.get();
 
-                rotateX.setAngle(rotateX.getAngle() - deltaY);
-                rotateY.setAngle(rotateY.getAngle() + deltaX);
+                rotateX.setAngle(rotateX.getAngle() + deltaY);
+                rotateY.setAngle(rotateY.getAngle() - deltaX);
 
                 mousePosX.set(event.getSceneX());
                 mousePosY.set(event.getSceneY());
