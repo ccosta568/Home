@@ -2,42 +2,32 @@ package House;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.MeshView;
-import javafx.scene.shape.TriangleMesh;
+import javafx.scene.shape.Box;
+import javafx.scene.transform.Translate;
 
-public class Roof extends MeshView {
-    public Roof(double width, double depth) {
-        TriangleMesh roofMesh = new TriangleMesh();
+public class Roof {
 
-        float[] points = {
-                // Bottom vertices
-                0, 0, 0,
-                (float) width / 2, 0, (float) depth / 2,
-                (float) width / 2, 0, (float) -depth / 2,
-                (float) -width / 2, 0, (float) -depth / 2,
-                (float) -width / 2, 0, (float) depth / 2,
-                // Top vertex
-                0, (float) -width / 2, 0
-        };
+    // Drawing a Box
+    private Box roof;
 
-        int[] faces = {
-                // Base faces
-                0, 0, 1, 1, 2, 2,
-                0, 0, 2, 2, 3, 3,
-                0, 0, 3, 3, 4, 4,
-                0, 0, 4, 4, 1, 1,
-                // Side faces
-                1, 0, 2, 1, 5, 2,
-                2, 0, 3, 1, 5, 2,
-                3, 0, 4, 1, 5, 2,
-                4, 0, 1, 1, 5, 2
-        };
+    public Roof() {
+        // Creating a Box
+        roof = new Box();
 
-        roofMesh.getPoints().setAll(points);
-        roofMesh.getTexCoords().addAll(0, 0);
-        roofMesh.getFaces().setAll(faces);
+        // Setting the properties of the Box
+        roof.setWidth(200.0);
+        roof.setHeight(100.0);
+        roof.setDepth(200.0);
 
-        setMesh(roofMesh);
-        setMaterial(new PhongMaterial(Color.RED)); // Example material, you can customize
+        Translate translate = new Translate();
+        translate.setX(400);
+        translate.setY(300);
+        translate.setZ(75);
+
+        roof.getTransforms().add(translate);
+    }
+
+    public Box getRoof() {
+        return roof;
     }
 }
